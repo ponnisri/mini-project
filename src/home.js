@@ -1,28 +1,50 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import bankImg from "./bankk.png";
 import "./index.css";
 
 function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div>
       {/* Navbar */}
       <nav className="navbar">
         <h2 className="logo">Cache Bank</h2>
-        <ul className="nav-links">
+
+        {/* Hamburger (mobile only) */}
+        <div
+          className="hamburger"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          ☰
+        </div>
+
+        <ul className={`nav-links ${menuOpen ? "show" : ""}`}>
           <li>
-            <Link to="/" className="highlight-link">Home</Link>
+            <Link to="/" className="highlight-link" onClick={() => setMenuOpen(false)}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/create">Create Account</Link>
+            <Link to="/create" onClick={() => setMenuOpen(false)}>
+              Create Account
+            </Link>
           </li>
           <li>
-            <Link to="/deposit">Deposit</Link>
+            <Link to="/deposit" onClick={() => setMenuOpen(false)}>
+              Deposit
+            </Link>
           </li>
           <li>
-            <Link to="/withdraw">Withdraw</Link>
+            <Link to="/withdraw" onClick={() => setMenuOpen(false)}>
+              Withdraw
+            </Link>
           </li>
           <li>
-            <Link to="/alldata" className="highlight-link">All Data</Link>
+            <Link to="/alldata" className="highlight-link" onClick={() => setMenuOpen(false)}>
+              All Data
+            </Link>
           </li>
         </ul>
       </nav>
