@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./index.css";
@@ -6,7 +7,6 @@ import * as XLSX from "xlsx";
 function AllData({ users = [] }) {
   const [storedUsers, setStoredUsers] = useState([]);
 
-  // LOAD USERS
   useEffect(() => {
     const savedUsers = JSON.parse(localStorage.getItem("users")) || [];
 
@@ -21,7 +21,6 @@ function AllData({ users = [] }) {
   const formatCurrency = (amount) =>
     `₹${Number(amount).toLocaleString("en-IN")}`;
 
-  // EXPORT USER TO EXCEL
   const exportUserToExcel = (user) => {
     const transactions = user.transactions || [];
     const initialTransaction = transactions.find(
@@ -40,7 +39,8 @@ function AllData({ users = [] }) {
       .filter((t) => t.type === "Withdraw")
       .reduce((sum, t) => sum + Number(t.amount), 0);
 
-    const currentBalance = initialAmount + deposits - withdrawals;
+    const currentBalance =
+      initialAmount + deposits - withdrawals;
 
     const data = [
       ["Name", user.name],
@@ -59,7 +59,6 @@ function AllData({ users = [] }) {
 
   return (
     <div className="alldata-page">
-      {/* NAVBAR */}
       <nav className="navbar colorful-nav">
         <h2 className="logo">Cache Bank</h2>
         <ul className="nav-links">
@@ -71,7 +70,6 @@ function AllData({ users = [] }) {
         </ul>
       </nav>
 
-      {/* PAGE CONTENT */}
       <div className="all-data-container">
         {storedUsers.length === 0 ? (
           <p className="center-text">No users yet</p>
