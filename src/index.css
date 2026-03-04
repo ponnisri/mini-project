@@ -1392,3 +1392,38 @@ img {
     padding: 10px 0;
   }
 }
+/* Container */
+.all-data-container {
+  min-height: calc(100vh - 80px);
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.all-data-container {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-summary-card {
+  width: 350px;          /* SAME as Home */
+  padding: 30px;         /* SAME spacing */
+  border-radius: 20px;   /* SAME curve */
+
+  backdrop-filter: blur(15px);
+  background: rgba(0, 0, 0, 0.6);
+
+  color: white;
+}
+/* Grid */
+.cards-grid {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  justify-items: center; /* THIS makes single card center */
+}
+
